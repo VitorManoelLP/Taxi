@@ -1,5 +1,7 @@
 package com.taxi.app.extension;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
@@ -37,7 +39,9 @@ public abstract class ContainerBaseExtension {
     @ServiceConnection
     public static PostgreSQLContainer<?> postgresContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"))
             .withUsername("postgres")
-            .withPassword("postgres");
+            .withPassword("postgres")
+            .withEnv(Map.of("PGDATA", "/var/lib/postgresql/data"))
+            .withTmpFs(Map.of("/var/lib/postgresql/data", "rw"));
 
     public EntityManager getEm() {
         return em;
