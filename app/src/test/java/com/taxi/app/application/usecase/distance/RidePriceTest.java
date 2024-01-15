@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.taxi.app.application.usecase.AccountManager;
 import com.taxi.app.application.usecase.fare.HoursResolver;
 import com.taxi.app.application.usecase.ride.RidePrice;
 import com.taxi.app.domain.Coord;
@@ -29,6 +30,9 @@ public class RidePriceTest {
     @Mock
     private RequestRide requestRide;
 
+    @Mock
+    private AccountManager accountManager;
+
     @Test
     public void calculate() {
 
@@ -41,7 +45,8 @@ public class RidePriceTest {
         final RidePrice ridePrice = new RidePrice(
                 new CalculateDistanceHaversine(rideCoordResolver),
                 new HoursResolverFake(),
-                requestRide
+                requestRide,
+                accountManager
         );
 
         final RidePriceResponse price = ridePrice.calculate("87023060", "87035350");
@@ -61,7 +66,8 @@ public class RidePriceTest {
         final RidePrice ridePrice = new RidePrice(
                 new CalculateDistanceHaversine(rideCoordResolver),
                 new HoursResolverFake(),
-                requestRide
+                requestRide,
+                accountManager
         );
 
         final RidePriceResponse price = ridePrice.calculate(

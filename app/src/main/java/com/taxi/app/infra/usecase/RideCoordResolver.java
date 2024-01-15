@@ -1,6 +1,7 @@
 package com.taxi.app.infra.usecase;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.taxi.app.application.usecase.distance.GeolocationCalculator;
 import com.taxi.app.application.usecase.persistence.SaveCoord;
@@ -11,6 +12,7 @@ import com.taxi.app.infra.repository.CoordRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class RideCoordResolver {
 

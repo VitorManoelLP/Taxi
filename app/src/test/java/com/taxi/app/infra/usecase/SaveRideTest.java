@@ -51,8 +51,8 @@ public class SaveRideTest extends ContainerBaseExtension {
         saveCoord.save(from);
         saveCoord.save(to);
 
-        saveAccountUsecase.save(driver);
-        saveAccountUsecase.save(passenger);
+        saveAccountUsecase.save(driver, "1234");
+        saveAccountUsecase.save(passenger, "1234");
 
         getEm().flush();
 
@@ -90,7 +90,7 @@ public class SaveRideTest extends ContainerBaseExtension {
         saveCoord.save(from);
         saveCoord.save(to);
 
-        saveAccountUsecase.save(passenger);
+        saveAccountUsecase.save(passenger, "1234");
 
         getEm().flush();
 
@@ -119,7 +119,7 @@ public class SaveRideTest extends ContainerBaseExtension {
         saveCoord.save(from);
         saveCoord.save(to);
 
-        saveAccountUsecase.save(driver);
+        saveAccountUsecase.save(driver, "1234");
 
         getEm().flush();
 

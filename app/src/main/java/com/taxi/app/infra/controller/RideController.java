@@ -12,7 +12,7 @@ import com.taxi.app.dto.RidePriceResponse;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/ride")
+@RequestMapping("/api/ride")
 @RequiredArgsConstructor
 public class RideController {
 
