@@ -1,17 +1,22 @@
 package com.taxi.app.application.usecase.ride;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.taxi.app.application.usecase.persistence.SaveRide;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.Ride;
+import com.taxi.app.infra.repository.CoordRepository;
+
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class StartRideTest {
@@ -20,10 +25,13 @@ public class StartRideTest {
 
     private SaveRideFake saveRideFake;
 
+    @Mock
+    private CoordRepository coordRepository;
+
     @BeforeEach
     public void setup() {
         saveRideFake = new SaveRideFake();
-        startRide = new StartRide(saveRideFake);
+        startRide = new StartRide(saveRideFake, coordRepository);
     }
 
     @Test
@@ -32,10 +40,13 @@ public class StartRideTest {
         UUID idDriver = UUID.randomUUID();
         UUID idPassenger = UUID.randomUUID();
         BigDecimal price = new BigDecimal("100");
-        Coord from = new Coord("1","Rua Foo", -12.324, -32.423, "");
-        Coord to = new Coord("1","Rua Foo2", -31.324, -32.487, "");
+        Coord from = new Coord("123","Rua Foo", -12.324, -32.423, "");
+        Coord to = new Coord("234","Rua Foo2", -31.324, -32.487, "");
 
-        startRide.start(idDriver, idPassenger, price, from, to);
+        when(coordRepository.findByCep("123")).thenReturn(Optional.of(from));
+        when(coordRepository.findByCep("234")).thenReturn(Optional.of(to));
+
+        startRide.start(idDriver, idPassenger, price, "123", "234");
 
         Assertions.assertThat(saveRideFake).extracting(SaveRideFake::getRide)
                 .extracting(Ride::idDriver, Ride::idPassenger, Ride::price, Ride::to, Ride::from)
