@@ -22,7 +22,10 @@ import jakarta.persistence.EntityManager;
 @Transactional
 @DirtiesContext
 @Rollback
-@Import({HibernateValidatorConfig.class, HibernateCustomizer.class})
+@Import({
+        HibernateValidatorConfig.class,
+        HibernateCustomizer.class
+})
 public abstract class ContainerBaseExtension {
 
     @Autowired
