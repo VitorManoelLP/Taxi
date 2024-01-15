@@ -1,1 +1,2 @@
-use-google-calculator: "true"
+google:
+  enable: "true"

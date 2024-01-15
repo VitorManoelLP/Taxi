@@ -13,7 +13,7 @@ import com.taxi.app.infra.usecase.distance.CalculateDistanceGoogle;
 import com.taxi.app.infra.usecase.distance.GoogleGeolocationCalculator;
 
 @Configuration
-@ConditionalOnProperty(name = "use-google-calculator", havingValue = "true")
+@ConditionalOnProperty(name = "google.enable", havingValue = "true")
 public class SpringRideConfiguration {
 
     @Value("${google.key}")

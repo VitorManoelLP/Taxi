@@ -12,7 +12,7 @@ import com.taxi.app.infra.usecase.distance.CalculateDistanceHaversine;
 import com.taxi.app.infra.usecase.distance.PythonGeolocationCalculator;
 
 @Configuration
-@ConditionalOnProperty(name = "use-google-calculator", havingValue = "false", matchIfMissing = true)
+@ConditionalOnProperty(name = "google.enable", havingValue = "false", matchIfMissing = true)
 public class SpringRideLocaleConfiguration {
 
     @Bean
