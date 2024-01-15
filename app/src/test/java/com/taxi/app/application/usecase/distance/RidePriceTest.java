@@ -14,6 +14,7 @@ import com.taxi.app.application.usecase.ride.RidePrice;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.object.CepVO;
 import com.taxi.app.dto.RidePriceResponse;
+import com.taxi.app.infra.usecase.RequestRide;
 import com.taxi.app.infra.usecase.RideCoordResolver;
 import com.taxi.app.infra.usecase.distance.CalculateDistanceHaversine;
 
@@ -24,6 +25,9 @@ public class RidePriceTest {
 
     @Mock
     private RideCoordResolver rideCoordResolver;
+
+    @Mock
+    private RequestRide requestRide;
 
     @Test
     public void calculate() {
@@ -36,7 +40,8 @@ public class RidePriceTest {
 
         final RidePrice ridePrice = new RidePrice(
                 new CalculateDistanceHaversine(rideCoordResolver),
-                new HoursResolverFake()
+                new HoursResolverFake(),
+                requestRide
         );
 
         final RidePriceResponse price = ridePrice.calculate("87023060", "87035350");
@@ -55,7 +60,8 @@ public class RidePriceTest {
 
         final RidePrice ridePrice = new RidePrice(
                 new CalculateDistanceHaversine(rideCoordResolver),
-                new HoursResolverFake()
+                new HoursResolverFake(),
+                requestRide
         );
 
         final RidePriceResponse price = ridePrice.calculate(

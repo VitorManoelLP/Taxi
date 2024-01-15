@@ -1,5 +1,7 @@
 package com.taxi.app.infra.usecase;
 
+import org.springframework.stereotype.Service;
+
 import com.taxi.app.application.usecase.distance.GeolocationCalculator;
 import com.taxi.app.application.usecase.persistence.SaveCoord;
 import com.taxi.app.domain.Coord;
@@ -8,6 +10,7 @@ import com.taxi.app.infra.repository.CoordRepository;
 
 import lombok.RequiredArgsConstructor;
 
+@Service
 @RequiredArgsConstructor
 public class RideCoordResolver {
 
