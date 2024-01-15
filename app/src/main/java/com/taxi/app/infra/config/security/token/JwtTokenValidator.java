@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
+import javax.crypto.spec.SecretKeySpec;
+
 import org.springframework.security.core.userdetails.UserDetails;
 
 import io.jsonwebtoken.Claims;
@@ -20,12 +22,16 @@ public final class JwtTokenValidator {
     }
 
     private static String createToken(UserDetails userDetails) {
+
+        final SecretKeySpec secretKeySpec = new SecretKeySpec(KeyResolver.generateSafeSecret(),
+                SignatureAlgorithm.HS512.getJcaName());
+
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .claim("authorities", userDetails.getAuthorities())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + TimeUnit.HOURS.toMillis(24)))
-                .signWith(SignatureAlgorithm.HS512, KeyResolver.generateSafeSecret())
+                .signWith(secretKeySpec, SignatureAlgorithm.HS512)
                 .compact();
     }
 
@@ -52,7 +58,7 @@ public final class JwtTokenValidator {
     }
 
     private static Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKeyResolver(new KeyResolver()).parseClaimsJws(token).getBody();
+        return Jwts.parserBuilder().setSigningKeyResolver(new KeyResolver()).build().parseClaimsJws(token).getBody();
     }
 
 
