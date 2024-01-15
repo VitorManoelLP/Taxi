@@ -15,7 +15,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @Sql(statements = {
         "INSERT INTO COORD(LATITUDE, LONGITUDE, COORD_NAME, CEP) VALUES(-23.3965567, -51.9346865, 'Foo', '87023060');",
         "INSERT INTO COORD(LATITUDE, LONGITUDE, COORD_NAME, CEP) VALUES(-23.3885031, -51.8967807, 'Foo 2', '87035350');"
-})
+}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(statements = {
+        "DELETE FROM COORD"
+}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_CLASS)
 public class RideControllerTest extends ContainerBaseExtension {
 
     @Autowired
@@ -29,7 +32,7 @@ public class RideControllerTest extends ContainerBaseExtension {
                         .param("to", "87035350"))
                 .andReturn().getResponse().getContentAsString();
 
-        Assertions.assertThat(response).isEqualTo("{\"fromName\":\"Foo\",\"toName\":\"Foo 2\",\"price\":8.40}");
+        Assertions.assertThat(response).isEqualTo("{\"fromName\":\"Foo\",\"toName\":\"Foo 2\",\"price\":8.34}");
     }
 
 }

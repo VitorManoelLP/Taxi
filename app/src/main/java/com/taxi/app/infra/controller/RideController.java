@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taxi.app.application.usecase.ride.RidePriceCalculator;
+import com.taxi.app.application.usecase.ride.RidePrice;
 import com.taxi.app.dto.RidePriceResponse;
 
 import lombok.RequiredArgsConstructor;
@@ -16,11 +16,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RideController {
 
-    private final RidePriceCalculator ridePriceCalculator;
+    private final RidePrice ridePrice;
 
     @GetMapping("/calculator")
     public ResponseEntity<RidePriceResponse> calculateFromTo(@RequestParam("from") String cepFrom, @RequestParam("to") String cepTo) {
-        return ResponseEntity.ok(ridePriceCalculator.calculate(cepFrom, cepTo));
+        return ResponseEntity.ok(ridePrice.calculate(cepFrom, cepTo));
     }
 
 }

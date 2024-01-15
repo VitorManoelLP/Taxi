@@ -32,8 +32,8 @@ public class StartRideTest {
         UUID idDriver = UUID.randomUUID();
         UUID idPassenger = UUID.randomUUID();
         BigDecimal price = new BigDecimal("100");
-        Coord from = new Coord("1","Rua Foo", -12.324, -32.423);
-        Coord to = new Coord("1","Rua Foo2", -31.324, -32.487);
+        Coord from = new Coord("1","Rua Foo", -12.324, -32.423, "");
+        Coord to = new Coord("1","Rua Foo2", -31.324, -32.487, "");
 
         startRide.start(idDriver, idPassenger, price, from, to);
 

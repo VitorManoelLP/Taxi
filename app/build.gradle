@@ -29,6 +29,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.github.stefanbirkner:system-rules:1.19.0'
+	implementation 'com.google.maps:google-maps-services:2.2.0'
+	implementation 'org.slf4j:slf4j-simple:1.7.25'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.1.0'
 	implementation 'org.springframework.cloud:spring-cloud-openfeign-core:4.1.0'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'

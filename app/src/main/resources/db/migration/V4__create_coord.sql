@@ -4,5 +4,6 @@ CREATE TABLE coord
     cep VARCHAR(50) NOT NULL UNIQUE,
     latitude  DOUBLE PRECISION NOT NULL,
     longitude DOUBLE PRECISION NOT NULL,
+    place_id VARCHAR(255),
     PRIMARY KEY (latitude, longitude)
 );

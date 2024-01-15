@@ -7,7 +7,7 @@ import com.taxi.app.domain.Fare;
 
 public class NormalFareCalculator implements FareCalculator {
 
-    private static final double NORMAL_FARE = 2.1;
+    private static final double NORMAL_FARE = 0.0021;
 
     @Override
     public Fare calculate(double distance) {

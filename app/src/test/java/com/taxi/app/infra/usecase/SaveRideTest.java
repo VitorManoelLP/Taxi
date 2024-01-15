@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +19,7 @@ import com.taxi.app.domain.Ride;
 import com.taxi.app.domain.enums.RideStatus;
 import com.taxi.app.extension.ContainerBaseExtension;
 import com.taxi.app.infra.entity.RideEntity;
+import com.taxi.app.infra.repository.CoordRepository;
 
 public class SaveRideTest extends ContainerBaseExtension {
 
@@ -30,13 +32,21 @@ public class SaveRideTest extends ContainerBaseExtension {
     @Autowired
     private SaveCoord saveCoord;
 
+    @Autowired
+    private CoordRepository coordRepository;
+
+    @AfterEach
+    public void afterEach() {
+        coordRepository.deleteAll();
+    }
+
     @Test
     public void shouldSave() {
 
         Account driver = Fixtures.createDriver();
         Account passenger = Fixtures.createPassanger();
-        Coord from = new Coord("1", "Rua Foo", -100.00, -120.00);
-        Coord to = new Coord("1","Rua Foo2", -20.00, -23.00);
+        Coord from = new Coord("1", "Rua Foo", -100.00, -120.00, "");
+        Coord to = new Coord("2","Rua Foo2", -20.00, -23.00, "");
 
         saveCoord.save(from);
         saveCoord.save(to);
@@ -74,8 +84,8 @@ public class SaveRideTest extends ContainerBaseExtension {
     public void shouldThrowWhenDriverNotHasAccountTypeDriver() {
 
         Account passenger = Fixtures.createPassanger();
-        Coord from = new Coord("1","Rua Foo", -100.00, -120.00);
-        Coord to = new Coord("1","Rua Foo 2", -20.00, -23.00);
+        Coord from = new Coord("1","Rua Foo", -100.00, -120.00, "");
+        Coord to = new Coord("2","Rua Foo 2", -20.00, -23.00, "");
 
         saveCoord.save(from);
         saveCoord.save(to);
@@ -103,8 +113,8 @@ public class SaveRideTest extends ContainerBaseExtension {
     public void shouldThrowWhenPassengerNotHasAccountTypePassenger() {
 
         Account driver = Fixtures.createDriver();
-        Coord from = new Coord("1","Rua Foo", -100.00, -120.00);
-        Coord to = new Coord("1","Rua Foo2", -20.00, -23.00);
+        Coord from = new Coord("1","Rua Foo", -100.00, -120.00, "");
+        Coord to = new Coord("2","Rua Foo2", -20.00, -23.00, "");
 
         saveCoord.save(from);
         saveCoord.save(to);

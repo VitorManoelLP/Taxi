@@ -1,12 +1,11 @@
 package com.taxi.app.application.usecase.ride;
 
-import java.math.BigDecimal;
-
 import com.taxi.app.application.usecase.distance.CalculateDistance;
 import com.taxi.app.application.usecase.fare.FareCalculator;
 import com.taxi.app.application.usecase.fare.HoursResolver;
-import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.Fare;
+import com.taxi.app.domain.Location;
+import com.taxi.app.dto.RidePriceResponse;
 
 public class RidePrice {
 
@@ -18,10 +17,10 @@ public class RidePrice {
         this.fareCalculator = FareCalculator.factory(hoursResolver);
     }
 
-    public BigDecimal calculate(final Coord from, final Coord to) {
-        final double distance = calculateDistance.calculate(from, to);
-        final Fare fare = fareCalculator.calculate(distance);
-        return fare.fare();
+    public RidePriceResponse calculate(final String from, final String to) {
+        final Location location = calculateDistance.calculate(from, to);
+        final Fare fare = fareCalculator.calculate(location.distance());
+        return new RidePriceResponse(location.nameFrom(), location.nameTo(), fare.fare(), location.timeToArrive());
     }
 
 }

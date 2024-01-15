@@ -31,6 +31,8 @@ public class CoordEntity {
     @NotEmpty
     private String cep;
 
+    private String placeId;
+
     public static CoordEntity of(Double latitude, Double longitude) {
         final CoordEntity coordEntity = new CoordEntity();
         coordEntity.longitude = longitude;

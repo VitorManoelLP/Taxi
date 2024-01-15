@@ -1,7 +1,7 @@
 package com.taxi.app.application.usecase.distance;
 
-import com.taxi.app.domain.Coord;
+import com.taxi.app.domain.Location;
 
 public interface CalculateDistance {
-    double calculate(Coord from, Coord to);
+    Location calculate(String from, String  to);
 }

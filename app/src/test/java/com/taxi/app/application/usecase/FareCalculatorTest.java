@@ -18,7 +18,7 @@ public class FareCalculatorTest {
     @Test
     public void calculateNormalFare() {
         final FareCalculator fareCalculator = new NormalFareCalculator();
-        final double distance = 20;
+        final double distance = 20000;
         final Fare fare = fareCalculator.calculate(distance);
         Assertions.assertEquals(fare.fare(), new BigDecimal("42.00"));
     }
@@ -26,9 +26,9 @@ public class FareCalculatorTest {
     @Test
     public void calculateMidnightFare() {
         final FareCalculator fareCalculator = new MidnightFareCalculator();
-        final double distance = 20;
+        final double distance = 20000;
         final Fare fare = fareCalculator.calculate(distance);
-        Assertions.assertEquals(fare.fare(), new BigDecimal("100"));
+        Assertions.assertEquals(fare.fare(), new BigDecimal("100.00"));
     }
 
 }

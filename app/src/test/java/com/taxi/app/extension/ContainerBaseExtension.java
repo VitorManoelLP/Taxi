@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -19,6 +20,7 @@ import jakarta.persistence.EntityManager;
 @SpringBootTest
 @Testcontainers
 @Transactional
+@DirtiesContext
 @Rollback
 @Import({HibernateValidatorConfig.class, HibernateCustomizer.class})
 public abstract class ContainerBaseExtension {
