@@ -20,13 +20,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @AutoConfigureMockMvc
 @Sql(statements = {
-        "INSERT INTO COORD(LATITUDE, LONGITUDE, COORD_NAME, CEP) VALUES(-23.3965567, -51.9346865, 'Foo', '87023060');",
-        "INSERT INTO COORD(LATITUDE, LONGITUDE, COORD_NAME, CEP) VALUES(-23.3885031, -51.8967807, 'Foo 2', '87035350');",
-        "INSERT INTO ACCOUNT(ID, IMAGE_PATH, EMAIL, PHONE, NAME, ACCOUNT_TYPE, PASSWORD) VALUES('93e98369-ebd5-41ce-9335-4174395cd7dd', NULL, 'foo@gmail.com', '44555555555', 'FOO', 2, '234');"
+        "INSERT INTO TAXI.COORD(LATITUDE, LONGITUDE, COORD_NAME, CEP) VALUES(-23.3965567, -51.9346865, 'Foo', '87023060');",
+        "INSERT INTO TAXI.COORD(LATITUDE, LONGITUDE, COORD_NAME, CEP) VALUES(-23.3885031, -51.8967807, 'Foo 2', '87035350');",
+        "INSERT INTO TAXI.ACCOUNT(ID, IMAGE_PATH, EMAIL, PHONE, NAME, ACCOUNT_TYPE, PASSWORD) VALUES('93e98369-ebd5-41ce-9335-4174395cd7dd', NULL, 'foo@gmail.com', '44555555555', 'FOO', 2, '234');"
 }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(statements = {
-        "DELETE FROM COORD",
-        "DELETE FROM ACCOUNT"
+        "DELETE FROM TAXI.COORD",
+        "DELETE FROM TAXI.ACCOUNT"
 }, executionPhase = Sql.ExecutionPhase.AFTER_TEST_CLASS)
 public class RideControllerTest extends ContainerBaseExtension {
 

@@ -30,7 +30,7 @@ public class RidePrice {
         final Location location = calculateDistance.calculate(from, to);
         final Fare fare = fareCalculator.calculate(location.distance());
         final UUID requestedId = requestRide.request(
-                new RequestedRides(location.nameFrom(), location.nameTo(), from, to, fare.fare(), accountManager.getAccountByContext()));
+                new RequestedRides(location.nameFrom(), location.nameTo(), from, to, fare.fare(), accountManager.getAccountByContext(), false));
         return new RidePriceResponse(requestedId, location.nameFrom(), location.nameTo(), fare.fare(),
                 location.timeToArrive());
     }

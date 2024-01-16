@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.taxi.app.domain.enums.Roles;
 import com.taxi.app.infra.usecase.AccountManager;
 
 import lombok.RequiredArgsConstructor;
@@ -27,9 +28,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthenticationConfiguration {
 
-    public static final String AUTH_SIGN_UP = "/api/auth/sign-up";
-    public static final String AUTH_SIGN_IN = "/api/auth/sign-in";
-    public static final String IS_VALID_TOKEN = "/api/auth/is-valid-token";
+    private static final String AUTH_SIGN_UP = "/api/auth/sign-up";
+    private static final String AUTH_SIGN_IN = "/api/auth/sign-in";
+    private static final String IS_VALID_TOKEN = "/api/auth/is-valid-token";
+    private static final String OUTBOX = "/api/outbox";
+    private static final String OUTBOX_ERROR = "/api/outbox/error";
 
     private final AccountManager accountManager;
 
@@ -55,7 +58,13 @@ public class AuthenticationConfiguration {
                                 AntPathRequestMatcher.antMatcher(HttpMethod.GET, IS_VALID_TOKEN)
                         )
                         .permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers(
+                                AntPathRequestMatcher.antMatcher(HttpMethod.GET, OUTBOX),
+                                AntPathRequestMatcher.antMatcher(HttpMethod.GET, OUTBOX_ERROR)
+                        )
+                        .hasRole(Roles.ADMIN.getRole())
+                        .anyRequest()
+                        .authenticated())
                 .authenticationManager(manager)
                 .addFilter(new AuthFilter(manager, accountManager))
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

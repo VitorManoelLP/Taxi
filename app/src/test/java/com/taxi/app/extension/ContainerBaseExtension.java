@@ -9,14 +9,17 @@ import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.containers.RabbitMQContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
 import com.taxi.app.infra.config.HibernateCustomizer;
 import com.taxi.app.infra.config.HibernateValidatorConfig;
+import com.taxi.app.infra.config.JacksonConfiguration;
 
 import jakarta.persistence.EntityManager;
 
@@ -26,9 +29,11 @@ import jakarta.persistence.EntityManager;
 @DirtiesContext
 @Rollback
 @WithMockUser
+@ActiveProfiles("test")
 @Import({
         HibernateValidatorConfig.class,
-        HibernateCustomizer.class
+        HibernateCustomizer.class,
+        JacksonConfiguration.class
 })
 public abstract class ContainerBaseExtension {
 
@@ -40,8 +45,13 @@ public abstract class ContainerBaseExtension {
     public static PostgreSQLContainer<?> postgresContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"))
             .withUsername("postgres")
             .withPassword("postgres")
+            .withDatabaseName("taxi")
             .withEnv(Map.of("PGDATA", "/var/lib/postgresql/data"))
             .withTmpFs(Map.of("/var/lib/postgresql/data", "rw"));
+
+    @Container
+    @ServiceConnection
+    public static RabbitMQContainer rabbitContainer = new RabbitMQContainer(DockerImageName.parse("rabbitmq:latest"));
 
     public EntityManager getEm() {
         return em;

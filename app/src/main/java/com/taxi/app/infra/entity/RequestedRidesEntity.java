@@ -3,6 +3,8 @@ package com.taxi.app.infra.entity;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+import org.hibernate.annotations.SQLRestriction;
+
 import com.taxi.app.infra.validation.CustomValidator;
 
 import jakarta.persistence.Entity;
@@ -26,6 +28,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @CustomValidator(message = "Requested Account linked named passenger must be a passenger", conditionalProperty = "passenger.accountType.isPassenger()", activateGroups = RequestedRidesEntity.isPassengerValidator.class)
 @Table(name = "REQUESTED_RIDES")
+@SQLRestriction(value = "not(accepted)")
 public class RequestedRidesEntity {
 
     @Id
@@ -49,6 +52,12 @@ public class RequestedRidesEntity {
     @ManyToOne
     @JoinColumn(name = "PASSENGER_ID", nullable = false)
     private AccountEntity passenger;
+
+    private boolean accepted = false;
+
+    public void accept() {
+        accepted = true;
+    }
 
     public interface isPassengerValidator {
     }

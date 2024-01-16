@@ -1,4 +1,4 @@
-CREATE TABLE coord
+CREATE TABLE IF NOT EXISTS coord
 (
     coord_name VARCHAR(255)     NOT NULL,
     cep        VARCHAR(50)      NOT NULL UNIQUE,

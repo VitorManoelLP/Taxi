@@ -1,6 +1,7 @@
 package com.taxi.app.application.usecase.distance;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import org.assertj.core.api.Assertions;
 import org.assertj.core.data.Offset;
@@ -19,6 +20,7 @@ import com.taxi.app.infra.usecase.RequestRide;
 import com.taxi.app.infra.usecase.RideCoordResolver;
 import com.taxi.app.infra.usecase.distance.CalculateDistanceHaversine;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -42,6 +44,8 @@ public class RidePriceTest {
         when(rideCoordResolver.resolve(new CepVO("87035350")))
                 .thenReturn(new Coord("87035350", "Rua Foo2", -23.4273, -51.9375, ""));
 
+        when(requestRide.request(any())).thenReturn(UUID.randomUUID());
+
         final RidePrice ridePrice = new RidePrice(
                 new CalculateDistanceHaversine(rideCoordResolver),
                 new HoursResolverFake(),
@@ -62,6 +66,8 @@ public class RidePriceTest {
 
         when(rideCoordResolver.resolve(new CepVO("87035350")))
                 .thenReturn(new Coord("1", "Rua Foo2", -23.3885, -51.8967, ""));
+
+        when(requestRide.request(any())).thenReturn(UUID.randomUUID());
 
         final RidePrice ridePrice = new RidePrice(
                 new CalculateDistanceHaversine(rideCoordResolver),
@@ -84,6 +90,7 @@ public class RidePriceTest {
         public boolean isMidnight() {
             return false;
         }
+
     }
 
 }

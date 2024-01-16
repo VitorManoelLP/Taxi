@@ -38,7 +38,12 @@ public class AccountManager implements UserDetailsService, com.taxi.app.applicat
 
     @Override
     public UUID getAccountByContext() {
-        return ((AccountEntity) loadUserByUsername(String.valueOf(SecurityContextHolder.getContext().getAuthentication().getPrincipal()))).getId();
+        return getAccountByEmail(String.valueOf(SecurityContextHolder.getContext().getAuthentication().getPrincipal()));
+    }
+
+    @Override
+    public UUID getAccountByEmail(String email) {
+        return ((AccountEntity) loadUserByUsername(email)).getId();
     }
 
     @Override

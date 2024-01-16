@@ -10,6 +10,7 @@ import com.taxi.app.dto.AccountRequest;
 
 public interface AccountManager {
     UUID getAccountByContext();
+    UUID getAccountByEmail(String email);
     UserDetails signUp(AccountRequest accountRequest);
     String signIn(AccountLoginRequest accountRequest, AuthenticationManager authenticationManager);
 }

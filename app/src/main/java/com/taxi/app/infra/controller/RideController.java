@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taxi.app.application.usecase.ride.AcceptRide;
 import com.taxi.app.application.usecase.ride.ConfirmRide;
 import com.taxi.app.application.usecase.ride.RidePrice;
 import com.taxi.app.dto.RidePriceResponse;
+import com.taxi.app.infra.usecase.producer.AcceptRideProducer;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +24,7 @@ public class RideController {
 
     private final RidePrice ridePrice;
     private final ConfirmRide confirmRide;
-    private final AcceptRide acceptRide;
+    private final AcceptRideProducer acceptRide;
 
     @GetMapping("/calculator")
     public ResponseEntity<RidePriceResponse> calculateFromTo(@RequestParam("from") String cepFrom, @RequestParam("to") String cepTo) {

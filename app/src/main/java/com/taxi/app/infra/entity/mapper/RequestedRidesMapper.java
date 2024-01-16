@@ -19,7 +19,8 @@ public class RequestedRidesMapper {
                 requestedRides.cepFrom(),
                 requestedRides.cepTo(),
                 requestedRides.price(),
-                AccountEntity.of(requestedRides.passengerId())
+                AccountEntity.of(requestedRides.passengerId()),
+                requestedRides.accepted()
         );
     }
 

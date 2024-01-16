@@ -1,4 +1,4 @@
-CREATE TABLE rides
+CREATE TABLE IF NOT EXISTS rides
 (
     id             UUID PRIMARY KEY,
     price          NUMERIC          NOT NULL,
