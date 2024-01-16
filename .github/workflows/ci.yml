@@ -22,4 +22,5 @@ jobs:
        with:
          token: ${{ secrets.TC_CLOUD_TOKEN }}
      - name: Execute Test
-       run: ./gradlew check
+       working-directory: ./app
+       run: gradle check
