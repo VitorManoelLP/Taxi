@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.taxi.app.dto.amqp.AcceptRidePayload;
+import com.taxi.app.dto.AcceptRidePayload;
 import com.taxi.app.extension.ContainerBaseExtension;
 import com.taxi.app.infra.config.JacksonConfiguration;
 import com.taxi.app.infra.entity.OutBoxEntity;

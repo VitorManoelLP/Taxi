@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.taxi.app.application.usecase.fare.FareCalculator;
 import com.taxi.app.application.usecase.fare.MidnightFareCalculator;
 import com.taxi.app.application.usecase.fare.NormalFareCalculator;
 import com.taxi.app.domain.Fare;

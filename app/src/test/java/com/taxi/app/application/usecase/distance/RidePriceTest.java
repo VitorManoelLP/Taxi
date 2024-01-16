@@ -11,7 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.taxi.app.application.usecase.AccountManager;
-import com.taxi.app.application.usecase.fare.HoursResolver;
+import com.taxi.app.application.usecase.HoursResolver;
 import com.taxi.app.application.usecase.ride.RidePrice;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.object.CepVO;

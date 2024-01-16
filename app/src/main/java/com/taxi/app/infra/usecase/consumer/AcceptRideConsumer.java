@@ -8,9 +8,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.taxi.app.application.usecase.ride.AcceptRide;
-import com.taxi.app.dto.amqp.AcceptRidePayload;
-import com.taxi.app.dto.amqp.Exchanges;
+import com.taxi.app.application.usecase.AcceptRide;
+import com.taxi.app.dto.AcceptRidePayload;
+import com.taxi.app.dto.Exchanges;
 import com.taxi.app.infra.usecase.outbox.OutBoxRabbitConsumer;
 
 import jakarta.persistence.EntityManager;

@@ -1,4 +1,4 @@
-package com.taxi.app.application.usecase.distance;
+package com.taxi.app.application.usecase;
 
 import com.taxi.app.domain.Location;
 

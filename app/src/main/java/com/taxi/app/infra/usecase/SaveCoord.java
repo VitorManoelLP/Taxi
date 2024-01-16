@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class SaveCoord implements com.taxi.app.application.usecase.persistence.SaveCoord {
+public class SaveCoord implements com.taxi.app.application.usecase.SaveCoord {
 
     private final CoordRepository coordRepository;
 

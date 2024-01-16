@@ -1,6 +1,6 @@
 package com.taxi.app.infra.usecase.distance;
 
-import com.taxi.app.application.usecase.distance.GeolocationCalculator;
+import com.taxi.app.application.usecase.GeolocationCalculator;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.infra.clients.GeolocationPythonClient;
 

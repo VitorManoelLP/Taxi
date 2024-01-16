@@ -1,4 +1,4 @@
-package com.taxi.app.application.usecase.persistence;
+package com.taxi.app.application.usecase;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

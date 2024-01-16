@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class SaveRide implements com.taxi.app.application.usecase.persistence.SaveRide {
+public class SaveRide implements com.taxi.app.application.usecase.SaveRide {
 
     private final RideRepository rideRepository;
 

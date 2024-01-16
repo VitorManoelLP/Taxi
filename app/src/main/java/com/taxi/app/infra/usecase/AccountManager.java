@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.taxi.app.application.usecase.persistence.SaveAccountUsecase;
+import com.taxi.app.application.usecase.SaveAccountUsecase;
 import com.taxi.app.dto.AccountLoginRequest;
 import com.taxi.app.dto.AccountRequest;
 import com.taxi.app.infra.config.security.AuthenticationConfiguration;

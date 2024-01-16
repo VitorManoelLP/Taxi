@@ -8,8 +8,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.taxi.app.application.usecase.distance.GeolocationCalculator;
-import com.taxi.app.application.usecase.persistence.SaveCoord;
+import com.taxi.app.application.usecase.GeolocationCalculator;
+import com.taxi.app.application.usecase.SaveCoord;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.object.CepVO;
 import com.taxi.app.infra.repository.CoordRepository;

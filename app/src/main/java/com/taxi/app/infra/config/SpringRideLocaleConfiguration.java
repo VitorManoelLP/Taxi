@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.taxi.app.application.usecase.distance.CalculateDistance;
-import com.taxi.app.application.usecase.distance.GeolocationCalculator;
+import com.taxi.app.application.usecase.CalculateDistance;
+import com.taxi.app.application.usecase.GeolocationCalculator;
 import com.taxi.app.infra.clients.GeolocationPythonClient;
 import com.taxi.app.infra.usecase.RideCoordResolver;
 import com.taxi.app.infra.usecase.distance.CalculateDistanceHaversine;

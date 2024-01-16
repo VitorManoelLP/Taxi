@@ -11,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.taxi.app.application.usecase.persistence.SaveRide;
+import com.taxi.app.application.usecase.SaveRide;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.Ride;
 import com.taxi.app.infra.repository.CoordRepository;

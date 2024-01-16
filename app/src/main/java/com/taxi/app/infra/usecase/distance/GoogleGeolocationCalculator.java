@@ -8,7 +8,7 @@ import com.google.maps.GeocodingApi;
 import com.google.maps.GeocodingApiRequest;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
-import com.taxi.app.application.usecase.distance.GeolocationCalculator;
+import com.taxi.app.application.usecase.GeolocationCalculator;
 import com.taxi.app.domain.Coord;
 
 import lombok.RequiredArgsConstructor;

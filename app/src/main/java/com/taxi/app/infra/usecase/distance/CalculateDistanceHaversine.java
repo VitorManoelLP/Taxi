@@ -1,6 +1,6 @@
 package com.taxi.app.infra.usecase.distance;
 
-import com.taxi.app.application.usecase.distance.CalculateDistance;
+import com.taxi.app.application.usecase.CalculateDistance;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.Location;
 import com.taxi.app.domain.object.CepVO;

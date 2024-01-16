@@ -4,7 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.taxi.app.application.usecase.persistence.SaveAccountUsecase;
+import com.taxi.app.application.usecase.SaveAccountUsecase;
 import com.taxi.app.domain.Account;
 import com.taxi.app.infra.entity.mapper.AccountMapper;
 import com.taxi.app.infra.repository.AccountRepository;

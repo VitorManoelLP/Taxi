@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class RequestRide implements com.taxi.app.application.usecase.ride.RequestRide {
+public class RequestRide implements com.taxi.app.application.usecase.RequestRide {
 
     private final RequestedRidesRepository requestedRidesRepository;
 

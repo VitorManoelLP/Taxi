@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ConfirmRide implements com.taxi.app.application.usecase.ride.ConfirmRide {
+public class ConfirmRide implements com.taxi.app.application.usecase.ConfirmRide {
 
     private final SimpMessagingTemplate template;
     private final RequestedRidesRepository requestedRidesRepository;

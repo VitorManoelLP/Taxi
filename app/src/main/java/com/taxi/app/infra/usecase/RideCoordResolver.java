@@ -3,8 +3,8 @@ package com.taxi.app.infra.usecase;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.taxi.app.application.usecase.distance.GeolocationCalculator;
-import com.taxi.app.application.usecase.persistence.SaveCoord;
+import com.taxi.app.application.usecase.GeolocationCalculator;
+import com.taxi.app.application.usecase.SaveCoord;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.object.CepVO;
 import com.taxi.app.infra.repository.CoordRepository;

@@ -3,6 +3,7 @@ package com.taxi.app.application.usecase.fare;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import com.taxi.app.application.usecase.FareCalculator;
 import com.taxi.app.domain.Fare;
 
 public class MidnightFareCalculator implements FareCalculator {

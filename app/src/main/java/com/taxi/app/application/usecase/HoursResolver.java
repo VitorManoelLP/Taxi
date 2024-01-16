@@ -1,4 +1,4 @@
-package com.taxi.app.application.usecase.fare;
+package com.taxi.app.application.usecase;
 
 public interface HoursResolver {
 

@@ -8,9 +8,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.taxi.app.application.usecase.persistence.SaveAccountUsecase;
-import com.taxi.app.application.usecase.persistence.SaveCoord;
-import com.taxi.app.application.usecase.persistence.SaveRide;
+import com.taxi.app.application.usecase.SaveAccountUsecase;
+import com.taxi.app.application.usecase.SaveCoord;
+import com.taxi.app.application.usecase.SaveRide;
 import com.taxi.app.application.usecase.ride.state.RideState;
 import com.taxi.app.domain.Account;
 import com.taxi.app.domain.Coord;

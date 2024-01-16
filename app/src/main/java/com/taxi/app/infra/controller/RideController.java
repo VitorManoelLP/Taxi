@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taxi.app.application.usecase.ride.ConfirmRide;
+import com.taxi.app.application.usecase.ConfirmRide;
 import com.taxi.app.application.usecase.ride.RidePrice;
 import com.taxi.app.dto.RidePriceResponse;
 import com.taxi.app.infra.usecase.producer.AcceptRideProducer;

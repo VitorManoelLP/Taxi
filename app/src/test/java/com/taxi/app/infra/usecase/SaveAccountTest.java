@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 
-import com.taxi.app.application.usecase.persistence.SaveAccountUsecase;
+import com.taxi.app.application.usecase.SaveAccountUsecase;
 import com.taxi.app.domain.Account;
 import com.taxi.app.domain.enums.AccountType;
 import com.taxi.app.domain.enums.Roles;

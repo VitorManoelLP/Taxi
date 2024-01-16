@@ -3,7 +3,7 @@ package com.taxi.app.application.usecase.ride;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import com.taxi.app.application.usecase.persistence.SaveRide;
+import com.taxi.app.application.usecase.SaveRide;
 import com.taxi.app.application.usecase.ride.state.RideStatusNotStarted;
 import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.Ride;

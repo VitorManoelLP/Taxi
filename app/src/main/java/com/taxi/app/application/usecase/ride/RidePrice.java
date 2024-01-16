@@ -3,9 +3,10 @@ package com.taxi.app.application.usecase.ride;
 import java.util.UUID;
 
 import com.taxi.app.application.usecase.AccountManager;
-import com.taxi.app.application.usecase.distance.CalculateDistance;
-import com.taxi.app.application.usecase.fare.FareCalculator;
-import com.taxi.app.application.usecase.fare.HoursResolver;
+import com.taxi.app.application.usecase.CalculateDistance;
+import com.taxi.app.application.usecase.FareCalculator;
+import com.taxi.app.application.usecase.HoursResolver;
+import com.taxi.app.application.usecase.RequestRide;
 import com.taxi.app.domain.Fare;
 import com.taxi.app.domain.Location;
 import com.taxi.app.domain.RequestedRides;

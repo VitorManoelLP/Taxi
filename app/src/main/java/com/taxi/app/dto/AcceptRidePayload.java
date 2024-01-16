@@ -1,4 +1,4 @@
-package com.taxi.app.dto.amqp;
+package com.taxi.app.dto;
 
 import java.util.UUID;
 

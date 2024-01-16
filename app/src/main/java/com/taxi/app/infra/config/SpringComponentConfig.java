@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.taxi.app.application.usecase.AccountManager;
-import com.taxi.app.application.usecase.distance.CalculateDistance;
-import com.taxi.app.application.usecase.fare.HoursResolver;
+import com.taxi.app.application.usecase.CalculateDistance;
+import com.taxi.app.application.usecase.HoursResolver;
+import com.taxi.app.application.usecase.RequestRide;
 import com.taxi.app.application.usecase.fare.LocalDateTimeHoursResolver;
-import com.taxi.app.application.usecase.ride.RequestRide;
 import com.taxi.app.application.usecase.ride.RidePrice;
 import com.taxi.app.application.usecase.ride.StartRide;
 import com.taxi.app.infra.repository.CoordRepository;

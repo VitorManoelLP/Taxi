@@ -1,4 +1,4 @@
-package com.taxi.app.application.usecase.ride;
+package com.taxi.app.application.usecase;
 
 import java.util.UUID;
 

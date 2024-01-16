@@ -1,5 +1,7 @@
-package com.taxi.app.application.usecase.fare;
+package com.taxi.app.application.usecase;
 
+import com.taxi.app.application.usecase.fare.MidnightFareCalculator;
+import com.taxi.app.application.usecase.fare.NormalFareCalculator;
 import com.taxi.app.domain.Fare;
 
 public interface FareCalculator {
