@@ -11,8 +11,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.taxi.app.Fixture.Fixtures;
 import com.taxi.app.extension.ContainerBaseExtension;
+import com.taxi.app.fixture.Fixtures;
 import com.taxi.app.infra.entity.RequestedRidesEntity;
 import com.taxi.app.infra.repository.RequestedRidesRepository;
 

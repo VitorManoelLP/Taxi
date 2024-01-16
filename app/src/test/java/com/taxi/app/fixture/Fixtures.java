@@ -1,4 +1,4 @@
-package com.taxi.app.Fixture;
+package com.taxi.app.fixture;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.AuthorityUtils;

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.taxi.app.Fixture.Fixtures;
 import com.taxi.app.application.usecase.persistence.SaveAccountUsecase;
 import com.taxi.app.application.usecase.persistence.SaveCoord;
 import com.taxi.app.application.usecase.persistence.SaveRide;
@@ -18,6 +17,7 @@ import com.taxi.app.domain.Coord;
 import com.taxi.app.domain.Ride;
 import com.taxi.app.domain.enums.RideStatus;
 import com.taxi.app.extension.ContainerBaseExtension;
+import com.taxi.app.fixture.Fixtures;
 import com.taxi.app.infra.entity.RideEntity;
 import com.taxi.app.infra.repository.CoordRepository;
 
