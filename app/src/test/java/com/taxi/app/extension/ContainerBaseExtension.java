@@ -2,6 +2,7 @@ package com.taxi.app.extension;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
@@ -13,7 +14,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.RabbitMQContainer;
-import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
@@ -40,21 +40,27 @@ public abstract class ContainerBaseExtension {
     @Autowired
     private EntityManager em;
 
-    @Container
     @ServiceConnection
     public static PostgreSQLContainer<?> postgresContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"))
             .withUsername("postgres")
             .withPassword("postgres")
             .withDatabaseName("taxi")
             .withEnv(Map.of("PGDATA", "/var/lib/postgresql/data"))
-            .withTmpFs(Map.of("/var/lib/postgresql/data", "rw"));
+            .withTmpFs(Map.of("/var/lib/postgresql/data", "rw"))
+            .withReuse(true);
 
-    @Container
     @ServiceConnection
-    public static RabbitMQContainer rabbitContainer = new RabbitMQContainer(DockerImageName.parse("rabbitmq:latest"));
+    public static RabbitMQContainer rabbitContainer = new RabbitMQContainer(DockerImageName.parse("rabbitmq:latest"))
+            .withReuse(true);
 
     public EntityManager getEm() {
         return em;
+    }
+
+    @BeforeAll
+    public static void beforeAll() {
+        postgresContainer.start();
+        rabbitContainer.start();
     }
 
 }

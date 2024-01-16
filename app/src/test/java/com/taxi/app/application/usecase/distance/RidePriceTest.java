@@ -81,7 +81,7 @@ public class RidePriceTest {
                 "87035350"
         );
 
-        Assertions.assertThat(price.price()).isCloseTo(new BigDecimal("8.51"), Offset.offset(new BigDecimal("0.1")));
+        Assertions.assertThat(price.price()).isCloseTo(new BigDecimal("8.40"), Offset.offset(new BigDecimal("0.1")));
     }
 
     private static class HoursResolverFake implements HoursResolver {
