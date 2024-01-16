@@ -34,15 +34,16 @@ public class OutBoxPolling {
             return;
         }
         final List<OutBoxEntity> allBySendedFalse = outBoxRepository.findAllBySentFalse();
-        if (!allBySendedFalse.isEmpty()) {
-            outBoxLockRepository.lock();
-            allBySendedFalse.forEach(outbox -> {
-                rabbitTemplate.convertAndSend(outbox.getExchange(), "", outbox);
-                outbox.send();
-                entityManager.merge(outbox);
-            });
-            outBoxLockRepository.unlock();
+        if (allBySendedFalse.isEmpty()) {
+            return;
         }
+        outBoxLockRepository.lock();
+        allBySendedFalse.forEach(outbox -> {
+            rabbitTemplate.convertAndSend(outbox.getExchange(), "", outbox);
+            outbox.send();
+            entityManager.merge(outbox);
+        });
+        outBoxLockRepository.unlock();
     }
 
 }

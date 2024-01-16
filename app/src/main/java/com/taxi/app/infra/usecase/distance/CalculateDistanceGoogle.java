@@ -46,7 +46,7 @@ public class CalculateDistanceGoogle implements CalculateDistance {
             final DistanceMatrixElement distanceMatrixElement = Stream.of(matrix.rows)
                     .map(row -> row.elements)
                     .flatMap(Stream::of)
-                    .findFirst().orElseThrow(() -> new IllegalStateException(""));
+                    .findFirst().orElseThrow(() -> new IllegalStateException("Matrix Element does not return a element"));
 
             final long distance = distanceMatrixElement.distance.inMeters;
             final String duration = distanceMatrixElement.duration.humanReadable;
@@ -54,7 +54,7 @@ public class CalculateDistanceGoogle implements CalculateDistance {
             return new Location(coordFrom.coordName(), coordTo.coordName(), distance, duration);
 
         } catch (InterruptedException | ApiException | IOException | IllegalStateException e) {
-            throw new IllegalStateException("It is not possible to calculate distance by cep");
+            throw new IllegalStateException("It is not possible to calculate distance by cep", e);
         }
 
     }

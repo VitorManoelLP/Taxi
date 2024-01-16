@@ -25,7 +25,7 @@ public class OutBoxProducer {
             outBoxRepository.save(outBoxEntity);
             log.debug("Outbox saved with id {}", outBoxEntity.getId());
         } catch (JsonProcessingException e) {
-            log.error("Failed produce message to topic {}", payload.getTopic(), e);
+            log.error("Failed to produce message to topic {}", payload.getTopic(), e);
         }
     }
 
