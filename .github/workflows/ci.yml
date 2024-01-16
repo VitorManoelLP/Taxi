@@ -7,7 +7,7 @@ on:
       
 jobs:
   build:
-    name: Gradle Build
+    name: Test Phase
     runs-on: ubuntu-latest
     steps: 
      - uses: actions/checkout@v3
@@ -21,9 +21,6 @@ jobs:
        uses: atomicjar/testcontainers-cloud-setup-action@main
        with:
          token: ${{ secrets.TC_CLOUD_TOKEN }}
-     name: Taxi App Test Suite
-     runs-on: ubuntu-latest
-     steps:
-       - name: Execute Test
+     - name: Suite Test
        working-directory: ./app
        run: gradle check
