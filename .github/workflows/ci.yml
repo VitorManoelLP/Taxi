@@ -21,6 +21,9 @@ jobs:
        uses: atomicjar/testcontainers-cloud-setup-action@main
        with:
          token: ${{ secrets.TC_CLOUD_TOKEN }}
-     - name: Execute Test
+     name: Taxi App Test Suite
+     runs-on: ubuntu-latest
+     steps:
+       - name: Execute Test
        working-directory: ./app
        run: gradle check
