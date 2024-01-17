@@ -15,6 +15,7 @@ import com.taxi.app.application.usecase.AccountManager;
 import com.taxi.app.dto.AccountLoginRequest;
 import com.taxi.app.dto.AccountRequest;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -34,6 +35,7 @@ public class AuthController {
                 .build();
     }
 
+    @ApiResponse(description = "Token JWT")
     @PostMapping(value = "/sign-in", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> signIn(@RequestBody @Valid final AccountLoginRequest accountRequest) {
         return ResponseEntity.ok(accountManager.signIn(accountRequest, authenticationManager));

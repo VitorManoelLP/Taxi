@@ -26,7 +26,7 @@ public class OutBoxPolling {
     private final OutBoxLockRepository outBoxLockRepository;
     private final EntityManager entityManager;
 
-    @Scheduled(fixedDelay = 3000L)
+    @Scheduled(fixedDelay = 30000L)
     public void poll() {
         log.info("Polling outbox looking for not sended messages");
         if (outBoxLockRepository.isLocked()) {

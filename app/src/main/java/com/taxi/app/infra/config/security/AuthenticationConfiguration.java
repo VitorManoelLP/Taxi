@@ -27,14 +27,18 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 public class AuthenticationConfiguration {
-
-    private static final String AUTH_SIGN_UP = "/api/auth/sign-up";
-    private static final String AUTH_SIGN_IN = "/api/auth/sign-in";
-    private static final String IS_VALID_TOKEN = "/api/auth/is-valid-token";
     private static final String OUTBOX = "/api/outbox";
     private static final String OUTBOX_ERROR = "/api/outbox/error";
 
     private final AccountManager accountManager;
+
+    private static final String[] AUTH_WHITE_LIST = {
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/v2/api-docs/**",
+            "/swagger-resources/**",
+            "/api/auth/**"
+    };
 
     @Bean
     public SecurityFilterChain configure(final HttpSecurity httpSecurity) throws Exception {
@@ -52,11 +56,7 @@ public class AuthenticationConfiguration {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers(
-                                AntPathRequestMatcher.antMatcher(HttpMethod.POST, AUTH_SIGN_UP),
-                                AntPathRequestMatcher.antMatcher(HttpMethod.POST, AUTH_SIGN_IN),
-                                AntPathRequestMatcher.antMatcher(HttpMethod.GET, IS_VALID_TOKEN)
-                        )
+                        .requestMatchers(AUTH_WHITE_LIST)
                         .permitAll()
                         .requestMatchers(
                                 AntPathRequestMatcher.antMatcher(HttpMethod.GET, OUTBOX),
