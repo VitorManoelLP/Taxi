@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Transactional
 @RequiredArgsConstructor
-public abstract class OutBoxRabbitConsumer<T extends Payload> {
+public abstract class OutBoxConsumer<T extends Payload> {
 
     @SuppressWarnings("unchecked")
     private final Class<T> payloadType = (Class<T>) ((ParameterizedType) getClass()

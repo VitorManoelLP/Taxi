@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.taxi.app.application.usecase.AcceptRide;
 import com.taxi.app.dto.AcceptRidePayload;
 import com.taxi.app.dto.Exchanges;
-import com.taxi.app.infra.usecase.outbox.OutBoxRabbitConsumer;
+import com.taxi.app.infra.usecase.outbox.OutBoxConsumer;
 
 import jakarta.persistence.EntityManager;
 
@@ -20,7 +20,7 @@ import jakarta.persistence.EntityManager;
         bindings = @QueueBinding(value = @Queue(value = AcceptRidePayload.TOPIC + "_QUEUE"),
         exchange = @Exchange(value = Exchanges.ACCEPT_RIDE_TOPIC, type = ExchangeTypes.TOPIC, declare = Exchange.FALSE), key = "")
 )
-public class AcceptRideConsumer extends OutBoxRabbitConsumer<AcceptRidePayload> {
+public class AcceptRideConsumer extends OutBoxConsumer<AcceptRidePayload> {
 
     private final AcceptRide acceptRide;
 

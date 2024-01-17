@@ -79,7 +79,7 @@ public class OutBoxRabbitConsumerTest extends ContainerBaseExtension {
         Assertions.assertThat(outBoxEntity.getErrorMessage()).isEqualTo("Error");
     }
 
-    public static class OutBoxConsumerFake extends OutBoxRabbitConsumer<OutBoxPayloadFake> {
+    public static class OutBoxConsumerFake extends OutBoxConsumer<OutBoxPayloadFake> {
 
         private OutBoxPayloadFake payloadReceived;
 
@@ -114,7 +114,7 @@ public class OutBoxRabbitConsumerTest extends ContainerBaseExtension {
 
     }
 
-    public static class OutBoxConsumerFakeError extends OutBoxRabbitConsumer<OutBoxPayloadFake> {
+    public static class OutBoxConsumerFakeError extends OutBoxConsumer<OutBoxPayloadFake> {
 
         public OutBoxConsumerFakeError(EntityManager entityManager,
                 ObjectMapper objectMapper) {
