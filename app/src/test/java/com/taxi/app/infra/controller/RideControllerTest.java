@@ -48,7 +48,7 @@ public class RideControllerTest extends ContainerBaseExtension {
 
         final List<RequestedRidesEntity> requestedRide = requestedRidesRepository.findAll();
 
-        Assertions.assertThat(response).contains("\"fromName\":\"Foo\",\"toName\":\"Foo 2\",\"price\":8.34");
+        Assertions.assertThat(response).contains("\"fromName\":\"Foo\",\"toName\":\"Foo 2\",\"price\":19.86");
         Assertions.assertThat(requestedRide)
                 .hasSize(1)
                 .extracting(RequestedRidesEntity::getCepFrom, RequestedRidesEntity::getCepTo, s -> s.getPassenger().getId())

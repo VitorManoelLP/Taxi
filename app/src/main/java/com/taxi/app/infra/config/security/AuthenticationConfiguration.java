@@ -37,7 +37,8 @@ public class AuthenticationConfiguration {
             "/swagger-ui/**",
             "/v2/api-docs/**",
             "/swagger-resources/**",
-            "/api/auth/**"
+            "/api/auth/**",
+            "/actuator/**"
     };
 
     @Bean
