@@ -20,7 +20,7 @@ jobs:
        uses: atomicjar/testcontainers-cloud-setup-action@main
        with:
          token: ${{ secrets.TC_CLOUD_TOKEN }}
-     - name: Build project
+     - name: Run Test
        working-directory: ./app
        run: gradle build
    web:
