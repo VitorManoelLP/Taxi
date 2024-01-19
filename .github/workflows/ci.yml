@@ -23,13 +23,13 @@ jobs:
      - name: Build project
        working-directory: ./app
        run: gradle build
-   web:
-     name: Web Test
-     runs-on: ubuntu-latest
-     strategy:
+  web:
+    name: Web Test
+    runs-on: ubuntu-latest
+    strategy:
       matrix:
         node-version: [18.x]
-     steps: 
+    steps: 
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
