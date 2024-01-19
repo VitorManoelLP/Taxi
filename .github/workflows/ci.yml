@@ -23,7 +23,7 @@ jobs:
      - name: Run Test
        working-directory: ./app
        run: gradle build
-   web:
+  web:
      name: Web Test
      runs-on: ubuntu-latest
      strategy:
