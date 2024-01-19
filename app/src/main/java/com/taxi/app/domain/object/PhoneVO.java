@@ -2,6 +2,7 @@ package com.taxi.app.domain.object;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 
 @Getter
 @EqualsAndHashCode
@@ -11,7 +12,7 @@ public class PhoneVO {
     long number;
     int countryCode;
 
-    public static PhoneVO of(String phone) {
+    public static PhoneVO of(@NonNull String phone) {
         String countryNumber = phone.substring(0, 2);
         String ddd = phone.substring(2, 4);
         String number = phone.substring(4);

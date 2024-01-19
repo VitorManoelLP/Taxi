@@ -4,6 +4,7 @@ import java.util.stream.Stream;
 
 import com.google.maps.model.GeocodingResult;
 
+import lombok.NonNull;
 import lombok.Value;
 
 @Value
@@ -14,7 +15,7 @@ public class GeolocationVO {
     double lng;
     String geoName;
 
-    public GeolocationVO(GeocodingResult[] geocodingResults) {
+    public GeolocationVO(@NonNull GeocodingResult[] geocodingResults) {
         this.placeId = getPlaceId(geocodingResults);
         this.lat = getLat(geocodingResults);
         this.lng = getLng(geocodingResults);

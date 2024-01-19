@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.taxi.app.application.usecase.SaveAccountUsecase;
+import com.taxi.app.domain.object.EmailVO;
 import com.taxi.app.dto.AccountLoginRequest;
 import com.taxi.app.dto.AccountRequest;
 import com.taxi.app.infra.config.security.AuthenticationConfiguration;
@@ -47,15 +48,16 @@ public class AccountManager implements UserDetailsService, com.taxi.app.applicat
     }
 
     @Override
-    public UserDetails signUp(AccountRequest accountRequest) {
-        return saveAccountUsecase.save(AccountMapper.toDomain(accountRequest), AuthenticationConfiguration.password().encode(accountRequest.password()));
+    public void signUp(AccountRequest accountRequest) {
+        saveAccountUsecase.save(AccountMapper.toDomain(accountRequest),
+                AuthenticationConfiguration.password().encode(accountRequest.password()));
     }
 
     @Override
     public String signIn(AccountLoginRequest accountRequest, AuthenticationManager authenticationManager) {
-        final String email = accountRequest.email();
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, accountRequest.password()));
-        final UserDetails userDetails = loadUserByUsername(email);
+        final EmailVO email = new EmailVO(accountRequest.email());
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email.getValue(), accountRequest.password()));
+        final UserDetails userDetails = loadUserByUsername(email.getValue());
         return JwtTokenValidator.generateToken(userDetails);
     }
 
