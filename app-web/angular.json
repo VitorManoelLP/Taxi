@@ -76,25 +76,14 @@
             "buildTarget": "app-web:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
-          }
+        "jest": {
+          "preset": "jest-preset-angular",
+          "setupFilesAfterEnv": ["<rootDir>/setup-jest.ts"]
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8b4dfee7-f22e-45b6-b30f-7694ce5215d1"
   }
 }
