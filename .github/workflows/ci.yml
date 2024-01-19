@@ -6,7 +6,7 @@ on:
       
 jobs:
   build:
-    name: Test Phase
+    name: Server Test
     runs-on: ubuntu-latest
     steps: 
      - uses: actions/checkout@v3
@@ -23,4 +23,25 @@ jobs:
      - name: Build project
        working-directory: ./app
        run: gradle build
+   web:
+     name: Web Test
+     runs-on: ubuntu-latest
+     strategy:
+      matrix:
+        node-version: [18.x]
+     steps: 
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+         node-version: ${{ matrix.node-version }}
+      - name: Install modules
+        working-directory: ./app-web
+        run: npm install
+      - name: Run test
+        working-directory: ./app-web
+        run: npm run test
+        env:
+         CI: true	
+       
   
