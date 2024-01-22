@@ -33,7 +33,7 @@ describe('SignInComponent', () => {
     });
 
     expect(component.form.get('email')?.invalid).toBeTruthy();
-    expect(component.form.get('email')?.errors).toEqual({ email: true });
+    expect(component.form.get('email')?.errors).toEqual({ email: 'Invalid e-mail' });
   });
 
   const requiredInput = [
@@ -73,14 +73,61 @@ describe('SignInComponent', () => {
     '1234567'
   ]
 
-  test.each(invalidPasswordLength)('should set error password when input as %p length', (input) => {
+  test.each(invalidPasswordLength)('should set error password when input like %p not has at least 8 length', (input) => {
 
     component.form.patchValue({
-      'password': [input]
+      'password': input
     });
 
     expect(component.form.invalid).toBeTruthy();
-    expect(component.form.get('password')?.errors).toEqual({ 'password-length': 'Password must have a length greater than 8' });
+    expect(component.form.get('password')?.errors?.['password-length']).toEqual('Password must have a length greater than 8');
+  });
+
+  test('should set error password when input like %p not has at least once letter', () => {
+
+    component.form.patchValue({
+      'password': '12345678'
+    });
+
+    expect(component.form.invalid).toBeTruthy();
+    expect(component.form.get('password')?.errors?.['password-minimum-letter']).toEqual('Password must have at least once letter');
+  });
+
+  test('should set error password when input like %p not has at least once capital letter', () => {
+
+    component.form.patchValue({
+      'password': '12345678teste'
+    });
+
+    expect(component.form.invalid).toBeTruthy();
+    expect(component.form.get('password')?.errors?.['password-capital-letter']).toEqual('Password must have at least once capital letter');
+  });
+
+  test('should set error password when input like %p not has at least once lowercase letter', () => {
+
+    component.form.patchValue({
+      'password': '12345678TESTE'
+    });
+
+    expect(component.form.invalid).toBeTruthy();
+    expect(component.form.get('password')?.errors?.['password-lowercase-letter']).toEqual('Password must have at least once lowercase letter');
+  });
+
+  test('should set error password when input like %p not has at least once symbols', () => {
+
+    component.form.patchValue({
+      'password': 'aaaaaaaA'
+    });
+
+    expect(component.form.invalid).toBeTruthy();
+    expect(component.form.get('password')?.errors?.['password-number']).toEqual('Password must have at least once number');
+  });
+
+  test('should not set error password when it has a right format', () => {
+    component.form.patchValue({
+      'password': '123456789Te'
+    });
+    expect(component.form.get('password')?.errors).toBeNull();
   });
 
 });

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {AuthValidator} from "../validators/auth-validators";
 
 @Component({
@@ -16,13 +16,11 @@ export class SignInComponent {
   }
 
   private createForm(): FormGroup {
-
-    const form: FormGroup = this.formBuilder.group({
+    return this.formBuilder.group({
       'email': ['', Validators.compose([AuthValidator.validateEmail(), Validators.required])],
       'password': ['', Validators.compose([Validators.required, AuthValidator.validatePassword()])]
     });
-
-    return form;
   }
 
+  protected readonly AuthValidator = AuthValidator;
 }
