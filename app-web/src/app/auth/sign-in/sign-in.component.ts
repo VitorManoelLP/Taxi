@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {AuthValidator} from "../validators/auth-validators";
+import {AuthService} from "../service/auth.service";
+import {CookieService} from "ngx-cookie-service";
+import {CookieManager} from "../../core/cookie.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -9,10 +12,28 @@ import {AuthValidator} from "../validators/auth-validators";
 })
 export class SignInComponent {
 
+  readonly AuthValidator = AuthValidator;
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private authService: AuthService,
+              private cookieManager: CookieManager) {
     this.form = this.createForm();
+  }
+
+  public signIn() {
+    if (this.form.valid) {
+      this.authService.signIn({ email: this.email, password: this.password })
+        .subscribe(token => this.cookieManager.setToken(token));
+    }
+  }
+
+  get email() {
+    return this.form.get('email')?.value;
+  }
+
+  get password() {
+    return this.form.get('password')?.value;
   }
 
   private createForm(): FormGroup {
@@ -21,6 +42,4 @@ export class SignInComponent {
       'password': ['', Validators.compose([Validators.required, AuthValidator.validatePassword()])]
     });
   }
-
-  protected readonly AuthValidator = AuthValidator;
 }
