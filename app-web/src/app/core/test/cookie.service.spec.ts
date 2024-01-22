@@ -1,5 +1,5 @@
 import {TestBed} from "@angular/core/testing";
-import {CookieManager} from "./cookie.service";
+import {CookieManager} from "../cookie.service";
 import {CookieService} from "ngx-cookie-service";
 import spyOn = jest.spyOn;
 

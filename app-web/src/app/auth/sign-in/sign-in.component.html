@@ -2,7 +2,7 @@
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <img ngSrc="./assets/icon.jpg" class="img-fluid" alt="Sample image" height="2000" width="2000">
+        <img ngSrc="./assets/icon.png" class="img-fluid" alt="Sample image" height="2000" width="2000" priority>
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form [formGroup]="form">
@@ -55,7 +55,8 @@
             <button type="button"
                     (click)="signIn()"
                     class="btn btn-primary btn-lg"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                    [disabled]="form.invalid">Login</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
                                                                               class="link-danger">Register</a></p>
           </div>

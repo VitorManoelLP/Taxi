@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import HttpClientParam from "./http-client-param";
 
@@ -13,7 +13,7 @@ export class HttpClientExtensionService {
   }
 
   public post<T>(request: HttpClientParam): Observable<T> {
-    return this.httpClient.post<T>(request.url, request);
+    return this.httpClient.post<T>(request.url, request.body);
   }
 
   public deleteById<T>(request: HttpClientParam): Observable<T> {

@@ -37,9 +37,12 @@ export class SignInComponent {
   }
 
   private createForm(): FormGroup {
-    return this.formBuilder.group({
-      'email': ['', Validators.compose([AuthValidator.validateEmail(), Validators.required])],
-      'password': ['', Validators.compose([Validators.required, AuthValidator.validatePassword()])]
+    const form = this.formBuilder.group({
+      'email': [''],
+      'password': ['']
     });
+    form.get('email')?.valueChanges.subscribe(() => form.get('email')?.setValidators(Validators.compose([AuthValidator.validateEmail(), Validators.required])));
+    form.get('password')?.valueChanges.subscribe(() => form.get('password')?.setValidators(Validators.compose([AuthValidator.validatePassword(), Validators.required])));
+    return form;
   }
 }

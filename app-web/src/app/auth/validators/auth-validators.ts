@@ -47,10 +47,10 @@ export class AuthValidator {
       let errors: { [key: string]: string } = {};
       if (!control.value) return null;
       if (control.value?.length < 8) errors['password-length'] = 'Password must have a length greater than 8';
-      if (!this.REGX_LETTER.test(control.value)) errors['password-minimum-letter'] = 'Password must have at least once letter';
-      if (!this.REGX_CAPITAL_LETTER.test(control.value)) errors['password-capital-letter'] = 'Password must have at least once capital letter';
-      if (!this.REGX_LOWERCASE_LETTER.test(control.value)) errors['password-lowercase-letter'] = 'Password must have at least once lowercase letter';
-      if (!this.REGX_NUMBER.test(control.value)) errors['password-number'] = 'Password must have at least once number';
+      if (!this.REGX_LETTER.test(control.value)) errors['password-minimum-letter'] = 'Password must have at least one letter';
+      if (!this.REGX_CAPITAL_LETTER.test(control.value)) errors['password-capital-letter'] = 'Password must have at least one capital letter';
+      if (!this.REGX_LOWERCASE_LETTER.test(control.value)) errors['password-lowercase-letter'] = 'Password must have at least one lowercase letter';
+      if (!this.REGX_NUMBER.test(control.value)) errors['password-number'] = 'Password must have at least one number';
       return Object.keys(errors).length ? errors : null;
     };
   }
