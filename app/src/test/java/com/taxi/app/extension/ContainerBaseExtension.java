@@ -26,7 +26,6 @@ import jakarta.persistence.EntityManager;
 @SpringBootTest
 @Testcontainers
 @Transactional
-@DirtiesContext
 @Rollback
 @WithMockUser
 @ActiveProfiles("test")
